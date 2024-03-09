@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoListComponent } from './todo-list.component';
+import { AppDialogComponent } from './app-dialog.component';
 
-describe('TodoListComponent', () => {
-  let component: TodoListComponent;
-  let fixture: ComponentFixture<TodoListComponent>;
+describe('AppDialogComponent', () => {
+  let component: AppDialogComponent;
+  let fixture: ComponentFixture<AppDialogComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoListComponent]
+      declarations: [AppDialogComponent]
     });
-    fixture = TestBed.createComponent(TodoListComponent);
+    fixture = TestBed.createComponent(AppDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

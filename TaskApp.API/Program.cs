@@ -24,10 +24,19 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // Replace with your Angular app's URL
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -39,5 +48,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors("AllowAngularOrigin");
 app.Run();
