@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 using TasksApp.API.Models;
 
 namespace TasksApp.API.Context
@@ -18,7 +19,7 @@ namespace TasksApp.API.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-         
+            
         }
     }
 }

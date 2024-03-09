@@ -23,13 +23,15 @@ namespace TasksApp.API.Repositry
 
         public async Task<List<TEntity>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet.AsNoTracking().ToListAsync();
         }
 
-        public async Task AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
-            await _dbSet.AddAsync(entity);
+             var Createdentity =    await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
+
+            return Createdentity.Entity;
         }
 
         public async Task UpdateAsync(TEntity entity)

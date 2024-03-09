@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ITodoItem } from 'src/models/todoItem';
+import { IPatchTodoItem, IPostTodoItem, ITodoItem } from 'src/models/todoItem';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,11 +18,15 @@ export class TodoService {
     return this.http.get<ITodoItem>(`${this.apiUrl}/${id}`);
   }
 
-  addTodoItem(todoItem: ITodoItem): Observable<ITodoItem> {
-    return this.http.post<ITodoItem>(this.apiUrl, todoItem);
+  addTodoItem(todoItem: IPostTodoItem): Observable<IPostTodoItem> {
+    console.log(todoItem);
+    return this.http.post<IPostTodoItem>(this.apiUrl, todoItem);
   }
 
-  updateTodoItem(id: number, todoItem: ITodoItem): Observable<ITodoItem> {
+  updateTodoItem(
+    id: number,
+    todoItem: IPatchTodoItem
+  ): Observable<IPatchTodoItem> {
     return this.http.patch<ITodoItem>(`${this.apiUrl}/${id}`, todoItem);
   }
 

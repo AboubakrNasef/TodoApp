@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.VisualBasic;
 using System;
 using TasksApp.API.Context;
@@ -45,8 +46,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+
 
 app.MapControllers();
+app.UseRouting();
 app.UseCors("AllowAngularOrigin");
+app.UseStaticFiles();
+
 app.Run();

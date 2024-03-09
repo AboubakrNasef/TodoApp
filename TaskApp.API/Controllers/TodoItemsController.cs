@@ -39,10 +39,21 @@ public class TodoItemsController : ControllerBase
 
     // POST: api/todoitems
     [HttpPost]
-    public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+    public async Task<ActionResult<TodoItem>> PostTodoItem(PostTodoItemDTO todoItemDTO)
     {
-        await _todoItemRepository.AddAsync(todoItem);
-        return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.Id }, todoItem);
+
+        var todoItem = new TodoItem()
+        {
+            Title = todoItemDTO.Title,
+            Description = todoItemDTO.Description,
+            DueDate = todoItemDTO.DueDate,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+        };
+
+      var item =  await _todoItemRepository.AddAsync(todoItem);
+
+        return CreatedAtAction(nameof(GetTodoItem), new { id = item.Id }, todoItem);
     }
 
     // PUT: api/todoitems/5

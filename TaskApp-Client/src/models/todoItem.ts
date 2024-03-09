@@ -7,3 +7,15 @@ export interface ITodoItem {
   updatedAt: Date;
   finished: boolean;
 }
+export interface IPostTodoItem {
+  title: string;
+  description: string;
+  dueDate: Date;
+}
+export interface IPatchTodoItem {
+  id: number;
+  title?: string;
+  description?: string;
+  dueDate?: Date;
+  finished?: boolean;
+}

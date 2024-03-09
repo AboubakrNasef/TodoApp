@@ -10,6 +10,7 @@ namespace TodoApp.API.Mapper
         {
             CreateMap<TodoItem, TodoItemDTO>();
             CreateMap<TodoItemDTO, TodoItem>();
+        
         }
     }
 }
